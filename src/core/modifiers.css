@@ -1,0 +1,76 @@
+/**
+ * @package @comfortcss/container
+ * @subpackage modifiers
+ * @since 0.1.0
+ *
+ * @section modifiers
+ * @description
+ *   Modifiers for padding, vertical centering, bleed effects, grid, and flex.
+ *
+ * @dependencies @comfortcss/tokens
+ */
+
+@layer container {
+    /* Padding modifiers */
+    :where(.container--padded) {
+        --container-padding: calc(var(--space-4) * 2);
+    }
+    @media (width >= 768px) {
+        :where(.container--padded) {
+            --container-padding: calc(var(--space-6) * 2);
+        }
+    }
+
+    :where(.container--nopad) {
+        --container-padding: 0;
+    }
+
+    /* Vertical centering */
+    :where(.container--centered) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;  /* fallback for older browsers */
+        min-height: 100dvh; /* dynamic viewport height (modern) */
+    }
+
+    /* Bleed effect (content extends beyond container edges) */
+    :where(.container--bleed) {
+        --container-padding: 0;
+        position: relative;
+    }
+    :where(.container--bleed) > * {
+        max-width: var(--container-max-width);
+        margin-inline: auto;
+        padding-inline: var(--space-4);
+    }
+    :where(.container--bleed) > .full-width {
+        max-width: 100%;
+        padding-inline: 0;
+    }
+
+    /* Grid container with adaptive columns via container queries */
+    :where(.container--grid) {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    @container ultra-container (width >= 400px) {
+        :where(.container--grid) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @container ultra-container (width >= 700px) {
+        :where(.container--grid) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    /* Flex container with wrap and gap */
+    :where(.container--flex) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+    }
+}
