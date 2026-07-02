@@ -1,0 +1,64 @@
+/**
+ * @package @comfortcss/container
+ * @subpackage variants
+ * @since 1.0.0
+ * @license MIT
+ * @author ComfortCSS
+ *
+ * @section variants
+ * @description
+ *   Width variants: small, large, extra large, full, fluid.
+ */
+@layer container {
+    :where(.container-xs) {
+        --container-max-width: clamp(
+            var(--breakpoint-sm) * 0.6,
+            60%,
+            var(--breakpoint-sm)
+        );
+    }
+    :where(.container-md) {
+        --container-max-width: clamp(
+            var(--breakpoint-md),
+            85%,
+            var(--breakpoint-lg)
+        );
+    }
+    :where(.container-sm) {
+        --container-max-width: clamp(
+            var(--breakpoint-sm),
+            80%,
+            var(--breakpoint-md)
+        );
+    }
+    :where(.container-lg) {
+        --container-max-width: clamp(
+            var(--breakpoint-lg),
+            90%,
+            var(--breakpoint-2xl)
+        );
+    }
+    :where(.container-xl) {
+        --container-max-width: clamp(
+            var(--breakpoint-xl),
+            95%,
+            1440px
+        );
+    }
+    :where(.container-2xl) {
+        --container-max-width: clamp(
+            1280px,
+            98%,
+            1600px
+        );
+    }
+    :where(.container-full) {
+        --container-max-width: 100%;
+    }
+    :where(.container-fluid) {
+        --container-max-width: min(
+            100% - var(--space-4) * 2,
+            var(--breakpoint-xl)
+        );
+    }
+}

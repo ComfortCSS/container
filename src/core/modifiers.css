@@ -1,0 +1,76 @@
+/**
+ * @package @comfortcss/container
+ * @subpackage modifiers
+ * @since 1.0.0
+ * @license MIT
+ * @author ComfortCSS
+ *
+ * @section modifiers
+ * @description
+ *   Modifiers for padding, vertical centering, bleed effects, grid, and flex.
+ *
+ * @dependencies @comfortcss/tokens
+ */
+
+@layer container {
+    /* Padding modifiers */
+    :where(.container--padding-none) {
+        --container-padding: 0;
+    }
+    :where(.container--padding-xs) {
+        --container-padding: var(--space-2);
+    }
+    :where(.container--padding-sm) {
+        --container-padding: var(--space-3);
+    }
+    :where(.container--padding-md) {
+        --container-padding: var(--space-5);
+    }
+    :where(.container--padding-lg) {
+        --container-padding: var(--space-8);
+    }
+    :where(.container--padding-xl) {
+        --container-padding: var(--space-12);
+    }
+
+      /* Alignment (flex-based) */
+    :where(.container--center) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;  /* fallback */
+        min-height: 100dvh; /* dynamic viewport height */
+    }
+    :where(.container--center-h) {
+        display: flex;
+        justify-content: center;
+    }
+    :where(.container--center-v) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    /* Bleed effect (content extends beyond container edges) */
+    :where(.container--bleed) {
+        --container-padding: 0;
+        position: relative;
+    }
+    :where(.container--bleed) > * {
+        max-width: var(--container-max-width);
+        margin-inline: auto;
+        padding-inline: var(--space-4);
+    }
+    :where(.container--bleed) > .full-width {
+        max-width: 100%;
+        padding-inline: 0;
+    }
+
+    :where(.container--nested) {
+        --container-max-width: 100%;
+        --container-padding: 0;
+    }
+}
