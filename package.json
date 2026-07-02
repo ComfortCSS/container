@@ -47,7 +47,7 @@
       "style": "./dist/container.min.css",
       "default": "./dist/container.min.css"
     },
-    "./modules/*": "./src/*",
+    "./modules/*": "./src/core/*",
     "./package.json": "./package.json"
   }
 }

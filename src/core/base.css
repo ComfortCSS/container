@@ -23,7 +23,7 @@
      * - `margin-inline: auto`   - centers the container horizontally (RTL‑safe).
      * - `padding-inline`        - logical padding (RTL‑safe).
      * - `container-type: inline-size` - enables container queries on inline axis.
-     * - `container-name: ultra-container` - named container for selective queries.
+     * - `container-name: comfortcss-container` - named container for selective queries.
      */
     :where(.container) {
         --container-max-width: clamp(
@@ -38,7 +38,7 @@
         padding-inline: var(--container-padding);
         width: 100%;
         container-type: inline-size;
-        container-name: ultra-container;
+        container-name: comfortcss-container;
     }
 
     /**
@@ -61,7 +61,7 @@
      */
     :where(.container-size) {
         container-type: size;
-        container-name: ultra-container-size;
+        container-name: comfortcss-container-size;
     }
 
     /**
