@@ -7,7 +7,7 @@
  * @description
  *   Width variants: small, large, extra large, full, fluid.
  */
-@layer components {
+@layer container {
     :where(.container-sm) {
         --container-max-width: clamp(
             var(--breakpoint-sm),
