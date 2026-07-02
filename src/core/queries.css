@@ -69,20 +69,6 @@
         }
     }
 
-    /* Multi-column layout using CSS columns */
-    @container comfortcss-container (width >= 500px) {
-        :where(.cq-columns-2) {
-            column-count: 2;
-            column-gap: var(--space-6);
-        }
-    }
-    @container comfortcss-container (width >= 800px) {
-        :where(.cq-columns-3) {
-            column-count: 3;
-            column-gap: var(--space-8);
-        }
-    }
-
     /* Image float based on container width */
     @container comfortcss-container (width < 400px) {
         :where(.cq-image) img {
