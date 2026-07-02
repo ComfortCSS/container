@@ -56,12 +56,12 @@
         gap: var(--space-6);
     }
 
-    @container ultra-container (width >= 400px) {
+    @container comfortcss-container (width >= 400px) {
         :where(.container--grid) {
             grid-template-columns: repeat(2, 1fr);
         }
     }
-    @container ultra-container (width >= 700px) {
+    @container comfortcss-container (width >= 700px) {
         :where(.container--grid) {
             grid-template-columns: repeat(3, 1fr);
         }

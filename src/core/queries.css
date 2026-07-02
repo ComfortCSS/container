@@ -1,0 +1,115 @@
+/**
+ * @package @comfortcss/container
+ * @subpackage container-queries
+ * @since 0.1.0
+ *
+ * @section container-queries
+ * @description
+ *   Styles that adapt based on the container's inline size.
+ *   All queries use the named container 'comfortcss-container'.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/@container
+ * @dependencies @comfortcss/tokens
+ */
+
+@layer container {
+    /* Adaptive typography based on container width */
+    @container comfortcss-container (width < 400px) {
+        :where(.cq-adaptive) h2 {
+            font-size: var(--font-size-lg);
+        }
+        :where(.cq-adaptive) p {
+            font-size: var(--font-size-sm);
+        }
+    }
+    @container comfortcss-container (width >= 400px) and (width < 700px) {
+        :where(.cq-adaptive) h2 {
+            font-size: var(--font-size-xl);
+        }
+        :where(.cq-adaptive) p {
+            font-size: var(--font-size-base);
+        }
+    }
+    @container comfortcss-container (width >= 700px) {
+        :where(.cq-adaptive) h2 {
+            font-size: var(--font-size-3xl);
+        }
+        :where(.cq-adaptive) p {
+            font-size: var(--font-size-lg);
+        }
+    }
+
+    /* Adaptive spacing based on container width */
+    @container comfortcss-container (width < 500px) {
+        :where(.cq-spacing) {
+            --container-padding: var(--space-2);
+        }
+    }
+    @container comfortcss-container (width >= 500px) and (width < 800px) {
+        :where(.cq-spacing) {
+            --container-padding: var(--space-6);
+        }
+    }
+    @container comfortcss-container (width >= 800px) {
+        :where(.cq-spacing) {
+            --container-padding: var(--space-10);
+        }
+    }
+
+    /* Side-by-side layout (flex) when container is wide enough */
+    @container comfortcss-container (width >= 600px) {
+        :where(.cq-side-by-side) {
+            display: flex;
+            gap: var(--space-6);
+        }
+        :where(.cq-side-by-side) > * {
+            flex: 1;
+        }
+    }
+
+    /* Multi-column layout using CSS columns */
+    @container comfortcss-container (width >= 500px) {
+        :where(.cq-columns-2) {
+            column-count: 2;
+            column-gap: var(--space-6);
+        }
+    }
+    @container comfortcss-container (width >= 800px) {
+        :where(.cq-columns-3) {
+            column-count: 3;
+            column-gap: var(--space-8);
+        }
+    }
+
+    /* Image float based on container width */
+    @container comfortcss-container (width < 400px) {
+        :where(.cq-image) img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    @container comfortcss-container (width >= 400px) {
+        :where(.cq-image) img {
+            width: 50%;
+            float: inline-start;
+            margin-inline-end: var(--space-4);
+        }
+    }
+
+    /* Named container variants for nested queries */
+    @container comfortcss-container-sm (width >= 300px) {
+        :where(.cq-sm-adaptive) {
+            background-color: var(--color-primary-light);
+        }
+    }
+    @container comfortcss-container-md (width >= 500px) {
+        :where(.cq-md-adaptive) {
+            background-color: var(--color-secondary-light);
+        }
+    }
+    @container comfortcss-container-lg (width >= 700px) {
+        :where(.cq-lg-adaptive) {
+            background-color: var(--color-success-light);
+        }
+    }
+}
