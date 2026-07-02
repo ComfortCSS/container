@@ -1,0 +1,71 @@
+/**
+ * @package @comfortcss/container
+ * @subpackage core
+ * @since 0.1.0
+ *
+ * @section core
+ * @description
+ *   Defines the base container class with fluid width, automatic horizontal
+ *   centering, logical padding, and container-type for container queries.
+ *
+ * @dependencies @comfortcss/tokens
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/@container
+ */
+
+@layer container {
+    /**
+     * Primary container class.
+     *
+     * - `--container-max-width` - fluid max-width based on breakpoints.
+     * - `--container-padding`   - responsive horizontal padding.
+     * - `margin-inline: auto`   - centers the container horizontally (RTL‑safe).
+     * - `padding-inline`        - logical padding (RTL‑safe).
+     * - `container-type: inline-size` - enables container queries on inline axis.
+     * - `container-name: ultra-container` - named container for selective queries.
+     */
+    :where(.container) {
+        --container-max-width: clamp(
+            var(--breakpoint-sm),
+            100% - var(--space-4) * 2,
+            var(--breakpoint-xl)
+        );
+        --container-padding: var(--space-4);
+
+        max-width: var(--container-max-width);
+        margin-inline: auto;
+        padding-inline: var(--container-padding);
+        width: 100%;
+        container-type: inline-size;
+        container-name: ultra-container;
+    }
+
+    /**
+     * Responsive padding adjustments based on viewport width.
+     */
+    @media (width >= 640px) {
+        :where(.container) {
+            --container-padding: var(--space-6);
+        }
+    }
+    @media (width >= 1024px) {
+        :where(.container) {
+            --container-padding: var(--space-8);
+        }
+    }
+
+    /**
+     * Container with `container-type: size` (both dimensions).
+     * Useful when you need to query height as well.
+     */
+    :where(.container-size) {
+        container-type: size;
+        container-name: ultra-container-size;
+    }
+
+    /**
+     * Container without container-type - for performance optimisation.
+     */
+    :where(.container-static) {
+        container-type: none;
+    }
+}
