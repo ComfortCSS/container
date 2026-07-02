@@ -1,0 +1,18 @@
+/**
+ * @package @comfortcss/container
+ * @version 0.1.0
+ * @license MIT
+ * @author ComfortCSS
+ *
+ * @description
+ *   Aggregates all container modules. Imports core, variants, modifiers,
+ *   container queries, sections, and utilities.
+ *
+ * @dependencies @comfortcss/tokens
+ */
+
+/* Import all parts */
+@import "./core/base.css";
+@import "./core/variants.css";
+@import "./core/modifiers.css";
+@import "./core/queries.css";

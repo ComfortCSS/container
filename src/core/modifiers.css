@@ -2,6 +2,8 @@
  * @package @comfortcss/container
  * @subpackage modifiers
  * @since 0.1.0
+ * @license MIT
+ * @author ComfortCSS
  *
  * @section modifiers
  * @description
@@ -12,26 +14,44 @@
 
 @layer container {
     /* Padding modifiers */
-    :where(.container--padded) {
-        --container-padding: calc(var(--space-4) * 2);
-    }
-    @media (width >= 768px) {
-        :where(.container--padded) {
-            --container-padding: calc(var(--space-6) * 2);
-        }
-    }
-
-    :where(.container--nopad) {
+    :where(.container--padding-none) {
         --container-padding: 0;
     }
+    :where(.container--padding-xs) {
+        --container-padding: var(--space-2);
+    }
+    :where(.container--padding-sm) {
+        --container-padding: var(--space-3);
+    }
+    :where(.container--padding-md) {
+        --container-padding: var(--space-5);
+    }
+    :where(.container--padding-lg) {
+        --container-padding: var(--space-8);
+    }
+    :where(.container--padding-xl) {
+        --container-padding: var(--space-12);
+    }
 
-    /* Vertical centering */
-    :where(.container--centered) {
+      /* Alignment (flex-based) */
+    :where(.container--center) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;  /* fallback */
+        min-height: 100dvh; /* dynamic viewport height */
+    }
+    :where(.container--center-h) {
+        display: flex;
+        justify-content: center;
+    }
+    :where(.container--center-v) {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        min-height: 100vh;  /* fallback for older browsers */
-        min-height: 100dvh; /* dynamic viewport height (modern) */
+        min-height: 100vh;
+        min-height: 100dvh;
     }
 
     /* Bleed effect (content extends beyond container edges) */
@@ -49,28 +69,8 @@
         padding-inline: 0;
     }
 
-    /* Grid container with adaptive columns via container queries */
-    :where(.container--grid) {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-    }
-
-    @container comfortcss-container (width >= 400px) {
-        :where(.container--grid) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    @container comfortcss-container (width >= 700px) {
-        :where(.container--grid) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    /* Flex container with wrap and gap */
-    :where(.container--flex) {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-4);
+    :where(.container--nested) {
+        --container-max-width: 100%;
+        --container-padding: 0;
     }
 }
