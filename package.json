@@ -33,7 +33,7 @@
   "devDependencies": {
     "lightningcss": "^1.32.0",
     "lightningcss-cli": "^1.32.0",
-    "@comfortcss/reset": "1.0.1"
+    "@comfortcss/reset": "1.1.0"
   },
   "publishConfig": {
     "access": "public"
